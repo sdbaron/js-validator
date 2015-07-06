@@ -1,3 +1,4 @@
+var MC = MC || {};
 MC.Common || (MC.Common={});
 /**
  * @namespace MC.Common.Validator
