@@ -612,16 +612,16 @@ MC.Common.Validator.ValidatorLayoutNavigator = function(options){
      * {String}         config.[errorLine='div-line'] - элемент-контейнер, которому будет добавлен класс error,
      *                          в случае возникновения ошибки в поле ввода
      * {String}         config.errorListClass - css-class, который назначается элементу UL списках ошибок
-     * {Function}       config.[onErrorsExists=null] - обработчик, вызываемый в случае возникновения ошибок
-     * {Function}       config.[onErrorsHidden=null] - обработчик, вызываемый в случае, когда ошибки исправлены
+     * {Function|null}       config.[onErrorsExists=null] - обработчик, вызываемый в случае возникновения ошибок
+     * {Function|null}       config.[onErrorsHidden=null] - обработчик, вызываемый в случае, когда ошибки исправлены
      *                      и список ошибок прячется,
      * {Boolean}        config.[focusOnInvalidElement=true] - Признак того, что при возникновении ошибок,
      *                      фокус нужно установить в первое невалидное поле
      * {Boolean}        config.[moveOnInvalidElement=true] - при возникновении ошибки нужно прокрутить документ к невалидному полю
-     * {Object}         config.[$buttonSubmit=null] - конопка сабмита
+     * {Object|null}         config.[$buttonSubmit=null] - конопка сабмита
      * {Function|null}  config.[onSubmitButtonHandler=null] - действия выполняемые по нажатию кнопки
-     * {MC.Common.Validator.ValidatorSubmitBehavior} config.[submitBehavior=null] - объект, определяющий, кода вызывается валидация
-     * {MC.Common.Validator.ValidatorLayoutNavigator} config.[layoutNavigator=null] - объект, заведующий отображением ошибок
+     * {MC.Common.Validator.ValidatorSubmitBehavior|null} config.[submitBehavior=null] - объект, определяющий, кода вызывается валидация
+     * {MC.Common.Validator.ValidatorLayoutNavigator|null} config.[layoutNavigator=null] - объект, заведующий отображением ошибок
      * @constructor
      *          <div class="div-line hint_line form_line error"> <--errorLine
      *  			<input class="invalid">
@@ -663,8 +663,9 @@ MC.Common.Validator.ValidatorForm = function (validateItems, config ) {
 
         var onErrorsExistsHandlers = [];
         var onErrorsHiddenHandlers = [];
-        if (config.onErrorsExists) {
-            onErrorsExistsHandlers.push(config.onErrorsExists);
+
+        if (config['onErrorsExists']) {
+            onErrorsExistsHandlers.push(config['onErrorsExists']);
         }
         if(config.onErrorsHidden) {
             onErrorsHiddenHandlers.push(config.onErrorsHidden);
@@ -872,7 +873,7 @@ MC.Common.Validator.ValidatorSubmitBehavior = function (options){
                     }
                 }
             }
-            if (firstError){
+            if (firstError && window['smoothScrollingTo']){
                 smoothScrollingTo(firstError.$item, 100);
             }
 
