@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <meta charset="UTF-8">
-    <script src="jquery.js"></script>
-    <script src="validation.js"></script>
-    <title></title>
+	<meta charset="UTF-8">
+	<script src="jquery.js"></script>
+	<script src="validation.js"></script>
+	<title></title>
 </head>
 <body>
 <form id="form-for-validate">
-    <div class="input-container">
-        <input type="text" value="" id="req">
-    </div>
-    <div class="input-container">
-        <input type="text" value="">
-    </div>
-    <input type="button" id="submitButton" value="Submit">
+	<div class="input-container">
+		<input type="text" value="" id="req">
+		<cite>
+			<ul class="errorList"><li>Ошибка</li></ul>
+		</cite>
+	</div>
+	<div class="input-container">
+		<input type="text" value="" id="num">
+	</div>
+	<input type="button" id="submitButton" value="Submit">
 </form>
 <script>
-    var r1 = new MC.Common.Validator.SimpleItem($('#req'), MC.Common.Validator.Rules.required);
-    var vf = new MC.Common.Validator.ValidatorForm([r1], {
-        dialogSelector: '#form-for-validate',
-        errorLine: 'input-container',
-        errorListClass: 'error',
-        $buttonSubmit: $('#submitButton')
-    });
+	var r1 = new MC.Common.Validator.SimpleItem($('#req'), MC.Common.Validator.Rules.required);
+	var vf = new MC.Common.Validator.ValidatorForm([r1], {
+		dialogSelector: '#form-for-validate',
+        errorLine: '.input-container',
+		errorListClass: 'error',
+		$buttonSubmit: $('#submitButton')
+	});
 
 </script>
 </body>
