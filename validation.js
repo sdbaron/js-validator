@@ -31,14 +31,14 @@ MC.Common.Validator = {
         return {
             // метод выполняющий проверку
             doCheck: isValidCheckerFn,
-            // восзвращает текст ошибки
+            // возвращает текст ошибки
             getErrorText: function () {
                 return null;
             },
 
             //выдаёт текст ошибки после последней проверки
             getLastErrorText: _getLastErrorText,
-            // устанвливает текст ошибки от последней проверки
+            // устанавливает текст ошибки от последней проверки
             setLastErrorText: _setLastErrorText,
             // устанавливает состояние валидности после проверки
             setValidness: function (value) {
